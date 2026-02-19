@@ -11,7 +11,11 @@ public class Main {
        humano.comer();
        humano.trabajar();
        System.out.println(humano);
+
+       System.out.println("Hola mundo!");
     }
+
+
 
 
 }
