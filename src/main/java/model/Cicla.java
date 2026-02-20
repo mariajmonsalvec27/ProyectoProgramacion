@@ -23,7 +23,7 @@ public class Cicla {
     }
 
     public void acelerar(){
-        System.out.println("Acelerando");
+        System.out.println("Acelerando, con preacucion");
     }
 
     public void frenar(){
