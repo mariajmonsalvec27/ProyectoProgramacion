@@ -27,7 +27,7 @@ public class Cicla {
     }
 
     public void frenar(){
-        System.out.println("Frenando");
+        System.out.println("Frenando con cuidado");
 
     }
 
