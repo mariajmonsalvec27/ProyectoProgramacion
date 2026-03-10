@@ -3,39 +3,68 @@ package model;
 public class Cicla {
 
     private String id;
-    private String nombre;
-    private boolean suspencion;
-    private boolean frenos;
-    private boolean transmision;
-    private String tipoPlato;
-    private String color;
-    private int tallaRin;
+    private String marca;
+    private String nombreCliente;
+    private String telefono;
 
-    public Cicla(String id, String nombre, boolean suspencion, boolean frenos, boolean transmision, String tipoPlato, int tallaRin) {
+    private Cliente cliente;
+    private OrdenServicio[] listaOrdenServicio;
+    private Mecanico[] listaMecanico;
+
+    public Cicla(String id, String marca, String nombreCliente, String telefono) {
 
         this.id = id;
-        this.nombre = nombre;
-        this.suspencion = suspencion;
-        this.frenos = frenos;
-        this.transmision = transmision;
-        this.tipoPlato = tipoPlato;
-        this.tallaRin = tallaRin;
+        this.marca = marca;
+        this.nombreCliente = nombreCliente;
+        this.telefono = telefono;
     }
 
-    public void acelerar(){
-        System.out.println("Acelerando");
+    public String getId() {
+        return id;
     }
 
-    public void frenar(){
-        System.out.println("Frenando");
-
+    public void setId(String id) {
+        this.id = id;
     }
 
-    @Override
-    public String toString(){
-        return " Id:" + id + " Nombre:" + nombre + " Suspension:" + suspencion + " Frenos:" + frenos + " Transmision:" + transmision + " Tipo de Plato:" + tipoPlato + " Color:" + color + " Talla de Rin:" + tallaRin;
+    public String getMarca() {
+        return marca;
     }
 
+    public void setMarca(String nombre) {
+        this.marca = marca;
+    }
+
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public OrdenServicio[] getListaOrdenServicio() {
+        return listaOrdenServicio;
+    }
+
+    public void setListaOrdenServicio(OrdenServicio[] listaOrdenServicio) {
+        this.listaOrdenServicio = listaOrdenServicio;
+    }
 }
-
 
