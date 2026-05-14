@@ -15,6 +15,7 @@ public class TallerMetodosPruebas {
     public static final double CORTE_AGUA = 10000;
     public static final double REQUIERE_HERRAMIENTA_PESADA = 15000;
 
+
     public void calcularCostoTotal(String tipoServicio, boolean requiereAdicional) {
 
         double costoTotal = 0;

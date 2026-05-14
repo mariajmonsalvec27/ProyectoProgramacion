@@ -15,6 +15,7 @@ public class MantenimientoTest {
     }
 
     @Test
+
     public void testCostoElectricidadConAltura() {
         double resultado = gestion.calcularCostoTotal("ELECTRICIDAD", true);
         assertEquals(70000, resultado, "La prueba pasa si el resultado de 50k + 20k es 70k");
