@@ -105,14 +105,14 @@ public class Main {
         sistema.agregarOrdenServicio(orden3);
 
 
-        System.out.println("====== TECNICOS ======");
+        System.out.println("TECNICOS");
         sistema.mostrarTecnicos();
 
-        System.out.println("\n====== ORDENES ======");
+        System.out.println("\nORDENES");
         sistema.mostrarOrdenes();
 
 
-        System.out.println("\n====== SERVICIOS EN CALLE 10 ======");
+        System.out.println("\nSERVICIOS EN CALLE 10");
 
         for (OrdenServicio orden :
                 sistema.buscarServiciosPorDireccion("Calle 10")) {
