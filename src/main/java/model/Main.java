@@ -1,81 +1,138 @@
 package model;
 
-import javax.swing.*;
-
 public class Main {
-     /**
-     * Veterinaria clinica = new Veterinaria();
-     * <p>
-     * Propietario p1 = new Propietario("Laura Gómez", "3001234567");
-     * Propietario p2 = new Propietario("Carlos Pérez", "3119876543");
-     * <p>
-     * Mascota m1 = new Mascota("Skibidi", "Perro", "Labrador", 3, "001", p1);
-     * Mascota m2 = new Mascota("Toilet", "Gato", "Siames", 2, "002", p2);
-     * <p>
-     * clinica.registrarMascota(m1);
-     * clinica.registrarMascota(m2);
-     * <p>
-     * System.out.println("LISTA DE MASCOTAS");
-     * clinica.mostrarMascotas();
-     * <p>
-     * System.out.println("BUSCAR MASCOTA CON ID 001");
-     * Mascota aux = clinica.buscarMascota("001");
-     * <p>
-     * if (aux != null) {
-     * aux.mostrarMascota();
-     * } else {
-     * System.out.println("Mascota no encontrada");
-     * }
-     * }
-     **/
-     public static void main(String[] args) {
-         Taller taller = new Taller("Taller de  bicis", "carrera 67-69S", "3057294741", "12-5");
 
-         while (opcion != 11) {
+    public static void main(String[] args) {
 
-             String menu = "===== TALLER DE BICIS =====\n"
-                     + "1. Registrar cliente\n"
-                     + "2. Eliminar cliente\n"
-                     + "3. Actualizar cliente\n"
-                     + "4. Mostrar cliente\n"
-                     + "5. Mostrar lista de clientes\n"
-                     + "6. Registrar bicicleta\n"
-                     + "7. Eliminar bicicleta\n"
-                     + "8. Actualizar bicicleta\n"
-                     + "9. Mostrar bicicleta\n"
-                     + "10. Mostrar lista de bicicletas\n"
-                     + "11. Salir";
+        SistemaGestion sistema = new SistemaGestion();
 
-             String entrada = JOptionPane.showInputDialog(null, menu, "Menu principal", JOptionPane.QUESTION_MESSAGE);
 
-             if (entrada == null) {
-                 break;
-             }
+        Tecnico tecnico1 = new Tecnico(
+                "Carlos Perez",
+                "123",
+                "Electricista",
+                5
+        );
 
-             opcion = Integer.parseInt(entrada);
+        Tecnico tecnico2 = new Tecnico(
+                "Ana Gomez",
+                "456",
+                "Fontanera",
+                8
+        );
 
-             switch (opcion) {
-                 case 1:
-                     String nombreReg = JOptionPane.showInputDialog("Ingrese el nombre: ");
-                     String apellidoReg = JOptionPane.showInputDialog("Ingrese el apellido: ");
-                     String cedulaReg = JOptionPane.showInputDialog("Ingrese la cedula: ");
-                     String direccionReg = JOptionPane.showInputDialog("Ingrese la direccion: ");
-                     String telefonoReg = JOptionPane.showInputDialog("Ingrese la telefono: ");
+        sistema.registrarTecnico(tecnico1);
+        sistema.registrarTecnico(tecnico2);
 
-                     boolean registrado = newTaller.registrarCliente(nombreReg, apellidoReg, cedulaReg, direccionReg, telefonoReg);
-                     JOptionPane.showMessageDialog(null, registrado ? "Cliente registrado exitosamente" : "Cliente no registrado.");
-                     break;
 
-                 case 2:
-                     String cedulaElim = JOptionPane.showInputDialog("Ingrese la cedula: ");
+        Vivienda vivienda1 = new Vivienda(
+                "Calle 10",
+                "Casa",
+                4
+        );
 
-                     boolean eliminadoCliente = newTaller.eliminarCliente(cedulaElim);
-                     JOptionPane.showMessageDialog(null, eliminadoCliente ? "Cliente eliminado exitosamente" : "Cliente no eliminado.");
-                     break;
+        Vivienda vivienda2 = new Vivienda(
+                "Carrera 20",
+                "Apartamento",
+                2
+        );
 
-                 case 3:
 
-             }
-         }
-     }
+        Servicio servicio1 = new Electricidad(
+                1,
+                "Reparacion electrica",
+                3,
+                true,
+                false
+        );
+
+        Servicio servicio2 = new Fontaneria(
+                2,
+                "Cambio de tuberia",
+                4,
+                true,
+                "PVC"
+        );
+
+        Servicio servicio3 = new Carpinteria(
+                3,
+                "Reparacion de puerta",
+                2,
+                false,
+                true
+        );
+
+        OrdenServicio orden1 = new OrdenServicio(
+                100,
+                tecnico1,
+                vivienda1,
+                servicio1
+        );
+
+        orden1.agregarMaterial(
+                new Material("Cable", 15000)
+        );
+
+        orden1.agregarMaterial(
+                new Material("Interruptor", 10000)
+        );
+
+        OrdenServicio orden2 = new OrdenServicio(
+                101,
+                tecnico2,
+                vivienda1,
+                servicio2
+        );
+
+        orden2.agregarMaterial(
+                new Material("Tuberia PVC", 30000)
+        );
+
+        OrdenServicio orden3 = new OrdenServicio(
+                102,
+                tecnico1,
+                vivienda2,
+                servicio3
+        );
+
+        orden3.agregarMaterial(
+                new Material("Madera", 25000)
+        );
+
+
+        sistema.agregarOrdenServicio(orden1);
+        sistema.agregarOrdenServicio(orden2);
+        sistema.agregarOrdenServicio(orden3);
+
+
+        System.out.println("====== TECNICOS ======");
+        sistema.mostrarTecnicos();
+
+        System.out.println("\n====== ORDENES ======");
+        sistema.mostrarOrdenes();
+
+
+        System.out.println("\n====== SERVICIOS EN CALLE 10 ======");
+
+        for (OrdenServicio orden :
+                sistema.buscarServiciosPorDireccion("Calle 10")) {
+
+            System.out.println(orden);
+        }
+
+
+        sistema.actualizarEstadoServicio(
+                100,
+                "Completado"
+        );
+
+
+        double total = sistema.calcularCostoTotalVivienda(
+                "Calle 10"
+        );
+
+        System.out.println(
+                "\nCosto total vivienda Calle 10: $" + total
+        );
+    }
 }
